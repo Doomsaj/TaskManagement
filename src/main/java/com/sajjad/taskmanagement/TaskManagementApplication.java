@@ -15,58 +15,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-@EnableJpaRepositories(basePackages = "com.sajjad.taskmanagement.repositories")
-@EntityScan(basePackages = "com.sajjad.taskmanagement.entities")
 @SpringBootApplication
 public class TaskManagementApplication {
-    @Value("${spring.datasource.url}")
-    private String datasourceUrl;
-
-    @Value("${spring.datasource.username}")
-    private String datasourceUsername;
-
-    @Value("${spring.datasource.password}")
-    private String datasourcePassword;
-
-    @Value("${spring.datasource.driver-class-name}")
-    private String datasourceDriverClassName;
-
-    @Value("${spring.jpa.hibernate.ddl-auto}")
-    private String hibernateDdlAuto;
-
-    @Value("${spring.jpa.properties.hibernate.dialect}")
-    private String hibernateDialect;
-
-    @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl(datasourceUrl);
-        dataSource.setUsername(datasourceUsername);
-        dataSource.setPassword(datasourcePassword);
-        dataSource.setDriverClassName(datasourceDriverClassName);
-        return dataSource;
-    }
-
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSource());
-        em.setPackagesToScan("com.sajjad.taskmanagement.entities");
-        em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        Properties properties = new Properties();
-        properties.put("hibernate.dialect", hibernateDialect);
-        properties.put("hibernate.hbm2ddl.auto", hibernateDdlAuto);
-        em.setJpaProperties(properties);
-        return em;
-    }
-
-    @Bean
-    public PlatformTransactionManager transactionManager() {
-        JpaTransactionManager tm = new JpaTransactionManager();
-        tm.setEntityManagerFactory(entityManagerFactory().getObject());
-        return tm;
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(TaskManagementApplication.class, args);
     }
