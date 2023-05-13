@@ -47,10 +47,6 @@ public class Project {
         return subProjects;
     }
 
-    public void setSubProjects(Set<SubProject> subProjects) {
-        this.subProjects = subProjects;
-    }
-
     public Integer getId() {
         return id;
     }

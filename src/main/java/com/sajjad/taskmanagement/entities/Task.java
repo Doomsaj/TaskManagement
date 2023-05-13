@@ -21,6 +21,7 @@ public class Task {
     @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne
+    @JoinColumn(name = "sub_project_id")
     private SubProject subProject;
 
     public Integer getId() {

@@ -65,16 +65,8 @@ public class User {
         return teams;
     }
 
-    public void setTeams(Set<Team> teams) {
-        this.teams = teams;
-    }
-
     public Set<Task> getTasks() {
         return tasks;
-    }
-
-    public void setTasks(Set<Task> tasks) {
-        this.tasks = tasks;
     }
 
     public User() {

@@ -1,11 +1,11 @@
 package com.sajjad.taskmanagement.DTOs;
 
-import lombok.Data;
+import com.sajjad.taskmanagement.entities.User;
 
 import java.io.Serializable;
 
 /**
- * A DTO for the {@link com.sajjad.taskmanagement.entities.User} entity
+ * A DTO for the {@link User} entity
  */
 public class UserDto implements Serializable {
     public UserDto(String name, String email, String password, String role) {

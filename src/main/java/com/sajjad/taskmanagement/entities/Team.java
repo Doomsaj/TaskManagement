@@ -54,16 +54,8 @@ public class Team {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
-
     public Set<Project> getProjects() {
         return projects;
-    }
-
-    public void setProjects(Set<Project> projects) {
-        this.projects = projects;
     }
 
     public Integer getId() {
