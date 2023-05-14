@@ -38,12 +38,12 @@ public class TeamService {
      * @return newly created team
      */
     public Team createNewTeam(TeamDto teamDto) {
-        User teamLead = userRepository.findById(teamDto.getTeamLeadId())
+        User teamLead = userRepository.findById(teamDto.teamLeadId())
                 .orElseThrow(() -> new RuntimeException("user not found"));
 
         Team newTeam = new Team();
-        newTeam.setName(teamDto.getName());
-        newTeam.setDescription(teamDto.getDescription());
+        newTeam.setName(teamDto.name());
+        newTeam.setDescription(teamDto.description());
         newTeam.setTeamLead(teamLead);
 
         return teamRepository.save(newTeam);
@@ -75,9 +75,9 @@ public class TeamService {
      * @return team with new team leader user
      */
     public Team changeTeamLead(TeamDto teamDto) {
-        Team team = getTeamByID(teamDto.getID());
+        Team team = getTeamByID(teamDto.ID());
 
-        User user = userRepository.findById(teamDto.getTeamLeadId())
+        User user = userRepository.findById(teamDto.teamLeadId())
                 .orElseThrow(() -> new RuntimeException("user not found"));
 
         team.setTeamLead(user);

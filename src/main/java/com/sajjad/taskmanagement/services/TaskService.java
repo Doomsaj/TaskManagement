@@ -36,16 +36,16 @@ public class TaskService {
     }
 
     public Task createTask(TaskDto taskDto) {
-        User user = userRepository.findById(taskDto.getUser_id())
+        User user = userRepository.findById(taskDto.user_id())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        SubProject subProject = subProjectRepository.findById(taskDto.getSub_project_id())
+        SubProject subProject = subProjectRepository.findById(taskDto.sub_project_id())
                 .orElseThrow(() -> new RuntimeException("Sub project not found"));
 
         Task task = new Task();
-        task.setName(taskDto.getName());
-        task.setDescription(taskDto.getDescription());
-        task.setDue_date(taskDto.getDue_date());
+        task.setName(taskDto.name());
+        task.setDescription(taskDto.description());
+        task.setDue_date(taskDto.due_date());
         task.setStatus(false);
         task.setUser(user);
         task.setSubProject(subProject);

@@ -34,11 +34,11 @@ public class SubProjectService {
     }
 
     public SubProject createSubProject(SubProjectDto subProjectDto) {
-        Project project = projectRepository.findById(subProjectDto.getProjectId())
+        Project project = projectRepository.findById(subProjectDto.projectId())
                 .orElseThrow(() -> new RuntimeException("project not found"));
 
         SubProject newSubProject = new SubProject();
-        newSubProject.setName(subProjectDto.getName());
+        newSubProject.setName(subProjectDto.name());
         newSubProject.setProject(project);
 
         return subProjectRepository.save(newSubProject);

@@ -36,12 +36,12 @@ public class ProjectService {
      * @return newly created project
      */
     public Project createNewProject(ProjectDto projectDto) {
-        Team team = teamRepository.findById(projectDto.getTeamId())
+        Team team = teamRepository.findById(projectDto.teamId())
                 .orElseThrow(() -> new RuntimeException("team not found"));
 
         Project project = new Project();
-        project.setName(projectDto.getName());
-        project.setDescription(projectDto.getDescription());
+        project.setName(projectDto.name());
+        project.setDescription(projectDto.description());
         project.setTeam(team);
         return projectRepository.save(project);
     }

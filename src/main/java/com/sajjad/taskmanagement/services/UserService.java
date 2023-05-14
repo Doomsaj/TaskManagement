@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -31,10 +30,10 @@ public class UserService {
 
     public User createUser(UserDto userDto) {
         User user = new User();
-        user.setName(userDto.getName());
-        user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
-        user.setRole(userDto.getRole());
+        user.setName(userDto.name());
+        user.setEmail(userDto.email());
+        user.setPassword(userDto.password());
+        user.setRole(userDto.role());
         return userRepository.save(user);
     }
 
@@ -51,5 +50,4 @@ public class UserService {
         User user = getUserById(userID);
         return user.getTeams();
     }
-
 }
